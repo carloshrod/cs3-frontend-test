@@ -1,0 +1,84 @@
+@use '../variables' as var;
+
+.sidebar {
+  width: 190px;
+  position: fixed;
+  z-index: 999;
+  padding-right: 10px;
+
+  .MuiButtonBase-root {
+    height: 50px;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 1px 1px 2px var.$bg-darker-color;
+    padding: 0 1rem;
+    margin-bottom: .7rem;
+
+    &:hover {
+      background-color: var.$bg-darker-color !important;
+      box-shadow: 1px 1px 2px var(--bg-darker-color);
+      color: var(--primary-color);
+    }
+
+    .MuiListItemIcon-root {
+      min-width: 24px;
+      padding-right: 1.2rem;
+    }
+
+    .expandIcon {
+      font-size: 1.2rem;
+      position: relative;
+      right: 20px;
+    }
+  }
+
+  &--collapse {
+    opacity: 0.8;
+  }
+
+  .Mui-selected {
+    background-color: var(--primary-transp-color) !important;
+    box-shadow: 1px 1px 2px var(--bg-darker-color);
+    color: var(--primary-color);
+    opacity: 1;
+
+    svg {
+      color: var(--primary-color) !important;
+    }
+  }
+
+  .MuiTypography-root {
+    display: block;
+  }
+
+  &--hide {
+    width: 70px;
+
+    .MuiTypography-root {
+      display: none;
+    }
+  }
+
+  @media (max-width: 599px) {
+    width: 70px !important;
+
+    .MuiTypography-root {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    width: 70px;
+
+    .MuiTypography-root {
+      display: none;
+    }
+
+    &#show {
+      width: 190px;
+
+      .MuiTypography-root {
+        display: block;
+      }
+    }
+  }
+}
