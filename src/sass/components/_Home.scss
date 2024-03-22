@@ -1,0 +1,33 @@
+@use '../variables' as var;
+
+.main {
+  height: 100%;
+  padding: 1rem 2rem;
+  margin-right: 10px;
+  background: var.$bg-darker-color;
+  border-radius: 5px;
+
+  @media (max-width: 599px) {
+    margin-left: 60px !important;
+  }
+
+  @media (max-width: 1199px) {
+    margin-left: 70px;
+
+    &#right {
+      margin-left: 190px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    margin-left: 190px;
+
+    &--left {
+      margin-left: 70px !important;
+    }
+  }
+
+  @media (max-height: 629px) {
+    height: auto !important;
+  }
+}
