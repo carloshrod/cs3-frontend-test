@@ -6,20 +6,20 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const ProductsByCategory = () => {
-	const { products } = useSelector(state => state.products);
-	const dispatch = useDispatch();
+	const { products, paging } = useSelector(state => state.products);
 	const {
 		query: { category_id },
 	} = useRouter();
+	const dispatch = useDispatch();
 	const { fetchProductsByCategory } = useThunks();
 
 	useEffect(() => {
 		dispatch(fetchProductsByCategory(category_id));
-	}, [category_id]);
+	}, [category_id, paging?.offset]);
 
 	return (
 		<MainContainer>
-			<ProductsTable rows={products} />
+			<ProductsTable rows={products} paging={paging} />
 		</MainContainer>
 	);
 };

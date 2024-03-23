@@ -5,17 +5,17 @@ import ProductsTable from '@/components/ProductsTable';
 import useThunks from '@/hooks/useThunks';
 
 export default function Home() {
-	const { products } = useSelector(state => state.products);
+	const { products, paging } = useSelector(state => state.products);
 	const dispatch = useDispatch();
 	const { fetchProducts } = useThunks();
 
 	useEffect(() => {
 		dispatch(fetchProducts());
-	}, []);
+	}, [paging?.offset]);
 
 	return (
 		<MainContainer>
-			<ProductsTable rows={products} />
+			<ProductsTable rows={products} paging={paging} />
 		</MainContainer>
 	);
 }

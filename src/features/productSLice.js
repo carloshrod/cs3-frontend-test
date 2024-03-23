@@ -27,6 +27,10 @@ export const productSlice = createSlice({
 		setCategoriesInfo: (state, action) => {
 			state.categories = action.payload;
 		},
+
+		setPagination: (state, action) => {
+			state.paging = { ...state.paging, offset: action.payload };
+		},
 	},
 });
 
@@ -35,5 +39,6 @@ export const {
 	setProductsByCategory,
 	setCategories,
 	setCategoriesInfo,
+	setPagination,
 } = productSlice.actions;
 export default productSlice.reducer;
