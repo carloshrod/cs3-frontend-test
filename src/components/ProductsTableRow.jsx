@@ -2,10 +2,19 @@ import { Avatar, Box, TableCell, TableRow } from '@mui/material';
 
 const ProductsTableRow = ({ row, labelId }) => {
 	return (
-		<TableRow hover tabIndex={-1} key={row.id}>
+		<TableRow
+			hover
+			tabIndex={-1}
+			key={row.id}
+			onClick={() => {
+				window.open(row.permalink, '_blank', 'noopener,noreferrer');
+			}}
+			sx={{ cursor: 'pointer' }}
+		>
 			<TableCell component='th' id={labelId} scope='row' padding='normal'>
 				{row.id}
 			</TableCell>
+
 			<TableCell component='th' id={labelId} scope='row' padding='normal'>
 				{row.title}
 			</TableCell>
