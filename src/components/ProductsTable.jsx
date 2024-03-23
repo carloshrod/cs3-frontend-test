@@ -29,6 +29,19 @@ const ProductsTable = ({ rows, paging }) => {
 
 	return (
 		<Paper sx={{ width: '100%', mb: 2, px: 2, py: 1 }}>
+			<Box
+				spacing={2}
+				sx={{
+					p: 2,
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					gap: 2,
+				}}
+			>
+				<Typography>Página: {page}</Typography>
+				<Pagination count={count} page={page} onChange={handleChange} />
+			</Box>
 			<TableContainer>
 				<Table sx={{ minWidth: 750 }} aria-labelledby='tableTitle'>
 					<TableHead>
