@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 
 const MainContainer = ({ children }) => {
-	const sidebarFull = true;
+	const { sidebarFull } = useSelector(state => state.ui);
 	const {
 		pathname,
 		query: { category_id },

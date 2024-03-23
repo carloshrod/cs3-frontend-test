@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import useThunks from '@/hooks/useThunks';
 
 export const Sidebar = () => {
-	const sidebarFull = true;
+	const { sidebarFull } = useSelector(state => state.ui);
 	const { categories } = useSelector(state => state.products);
 	const dispatch = useDispatch();
 	const { fetchCategories } = useThunks();

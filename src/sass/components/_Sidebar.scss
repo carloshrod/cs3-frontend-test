@@ -65,23 +65,23 @@
   }
 
   &--hide {
-    width: 70px;
+    width: 0;
+
+    nav {
+      overflow: hidden;
+    }
 
     .MuiTypography-root {
       display: none;
     }
   }
 
-  @media (max-width: 599px) {
-    width: 70px !important;
-
-    .MuiTypography-root {
-      display: none !important;
-    }
-  }
-
   @media (max-width: 1199px) {
-    width: 70px;
+    width: 0;
+
+    nav {
+      overflow: hidden;
+    }
 
     .MuiTypography-root {
       display: none;
@@ -89,6 +89,10 @@
 
     &#show {
       width: 250px;
+
+      nav {
+        overflow: auto;
+      }
 
       .MuiTypography-root {
         display: block;
