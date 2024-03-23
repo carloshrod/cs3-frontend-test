@@ -6,6 +6,7 @@ import {
 } from '@/features/dataSlice';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import useApi from './useApi';
+import { setIsFetching } from '@/features/uiSlice';
 
 const useThunks = () => {
 	const {
@@ -18,16 +19,26 @@ const useThunks = () => {
 	const fetchProducts = createAsyncThunk(
 		'data/fetchProducts',
 		async (_, { dispatch }) => {
+			dispatch(setIsFetching(true));
+
 			const res = await getProducts();
 			dispatch(setProducts(res));
+
+			dispatch(setIsFetching(false));
 		},
 	);
 
 	const fetchProductsByCategory = createAsyncThunk(
 		'data/fetchProductsByCategory',
 		async (categoryId, { dispatch }) => {
+			dispatch(setIsFetching(true));
+
 			const res = await getProductsByCategory(categoryId);
 			dispatch(setProductsByCategory(res));
+
+			setTimeout(() => {
+				dispatch(setIsFetching(false));
+			}, 300);
 		},
 	);
 
