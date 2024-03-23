@@ -25,8 +25,23 @@ const useApi = () => {
 		}
 	};
 
+	const getProductsByCategory = async categoryId => {
+		try {
+			if (categoryId) {
+				const query = `search?seller_id=179571326&offset=${offset}&limit=${limit}&category=`;
+				const res = await apiRequest(
+					`${axios.defaults.baseURL}${query}${categoryId}`,
+				);
+				return res.data;
+			}
+		} catch (error) {
+			console.error(error.message);
+		}
+	};
+
 	return {
 		getProducts,
+		getProductsByCategory,
 	};
 };
 

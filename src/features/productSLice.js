@@ -14,8 +14,13 @@ export const productSlice = createSlice({
 			state.products = action.payload.results;
 			state.paging = action.payload.paging;
 		},
+
+		setProductsByCategory: (state, action) => {
+			state.products = action.payload.results;
+			state.paging = action.payload.paging;
+		},
 	},
 });
 
-export const { setProducts } = productSlice.actions;
+export const { setProducts, setProductsByCategory } = productSlice.actions;
 export default productSlice.reducer;
