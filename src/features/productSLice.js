@@ -1,24 +1,18 @@
-import { getProducts } from '@/api';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	products: [],
+	paging: { total: 1, offset: 0, limit: 10 },
+	categories: [],
 };
-
-export const fetchProducts = createAsyncThunk(
-	'products/fetchProducts',
-	async (_, { dispatch }) => {
-		const res = await getProducts();
-		dispatch(setProducts(res));
-	},
-);
 
 export const productSlice = createSlice({
 	name: 'products',
 	initialState,
 	reducers: {
 		setProducts: (state, action) => {
-			state.products = action.payload;
+			state.products = action.payload.results;
+			state.paging = action.payload.paging;
 		},
 	},
 });
