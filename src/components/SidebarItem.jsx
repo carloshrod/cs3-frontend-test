@@ -2,10 +2,9 @@ import useThunks from '@/hooks/useThunks';
 import { IconButton, ListItemButton, ListItemText } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 export const SidebarItem = ({ item, open, handleOpen, depth }) => {
-	const { categories } = useSelector(state => state.products);
 	const dispatch = useDispatch();
 	const {
 		query: { category_id },
@@ -15,7 +14,7 @@ export const SidebarItem = ({ item, open, handleOpen, depth }) => {
 	const handleClick = event => {
 		event.preventDefault();
 		if (!open) {
-			dispatch(fetchCategoriesInfo({ item, categories }));
+			dispatch(fetchCategoriesInfo(item));
 		}
 		handleOpen();
 	};

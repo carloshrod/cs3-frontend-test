@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import ProductsTableRow from './ProductsTableRow';
 import { headCells } from './consts';
-import { setPagination } from '@/features/productSLice';
+import { setPagination } from '@/features/dataSlice';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
@@ -21,8 +21,9 @@ const ProductsTable = ({ rows, paging }) => {
 	const dispatch = useDispatch();
 
 	const handleChange = (_event, value) => {
+		const newOffset = (value - 1) * paging.limit;
 		setPage(value);
-		dispatch(setPagination((value - 1) * 10));
+		dispatch(setPagination(newOffset));
 	};
 
 	const count = Math.ceil(paging?.total / paging?.limit);
@@ -34,12 +35,14 @@ const ProductsTable = ({ rows, paging }) => {
 				sx={{
 					p: 2,
 					display: 'flex',
-					justifyContent: 'center',
+					justifyContent: 'space-between',
 					alignItems: 'center',
 					gap: 2,
 				}}
 			>
-				<Typography>Página: {page}</Typography>
+				<Typography sx={{ fontSize: 14, fontWeight: 300 }}>
+					Página: {page}
+				</Typography>
 				<Pagination count={count} page={page} onChange={handleChange} />
 			</Box>
 			<TableContainer>
@@ -89,12 +92,14 @@ const ProductsTable = ({ rows, paging }) => {
 				sx={{
 					p: 2,
 					display: 'flex',
-					justifyContent: 'center',
+					justifyContent: 'space-between',
 					alignItems: 'center',
 					gap: 2,
 				}}
 			>
-				<Typography>Página: {page}</Typography>
+				<Typography sx={{ fontSize: 14, fontWeight: 300 }}>
+					Página: {page}
+				</Typography>
 				<Pagination count={count} page={page} onChange={handleChange} />
 			</Box>
 		</Paper>

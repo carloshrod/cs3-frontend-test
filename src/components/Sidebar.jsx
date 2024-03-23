@@ -6,7 +6,7 @@ import useThunks from '@/hooks/useThunks';
 
 export const Sidebar = () => {
 	const { sidebarFull } = useSelector(state => state.ui);
-	const { categories } = useSelector(state => state.products);
+	const { categories } = useSelector(state => state.data);
 	const dispatch = useDispatch();
 	const { fetchCategories } = useThunks();
 

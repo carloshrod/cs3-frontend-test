@@ -14,7 +14,7 @@ const ToggleSidebar = () => {
 
 	return (
 		<IconButton onClick={handleSidebar} sx={{ zIndex: 999 }}>
-			{sidebarFull ? <MenuOpenIcon /> : <MenuIcon />}
+			{sidebarFull ? <MenuIcon /> : <MenuOpenIcon />}
 		</IconButton>
 	);
 };

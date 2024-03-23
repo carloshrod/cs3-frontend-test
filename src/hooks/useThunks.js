@@ -3,7 +3,7 @@ import {
 	setCategoriesInfo,
 	setProducts,
 	setProductsByCategory,
-} from '@/features/productSLice';
+} from '@/features/dataSlice';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import useApi from './useApi';
 
@@ -16,7 +16,7 @@ const useThunks = () => {
 		getCategoriesInfo,
 	} = useApi();
 	const fetchProducts = createAsyncThunk(
-		'products/fetchProducts',
+		'data/fetchProducts',
 		async (_, { dispatch }) => {
 			const res = await getProducts();
 			dispatch(setProducts(res));
@@ -24,7 +24,7 @@ const useThunks = () => {
 	);
 
 	const fetchProductsByCategory = createAsyncThunk(
-		'products/fetchProductsByCategory',
+		'data/fetchProductsByCategory',
 		async (categoryId, { dispatch }) => {
 			const res = await getProductsByCategory(categoryId);
 			dispatch(setProductsByCategory(res));
@@ -32,7 +32,7 @@ const useThunks = () => {
 	);
 
 	const fetchCategories = createAsyncThunk(
-		'products/fetchCategories',
+		'data/fetchCategories',
 		async (_, { dispatch }) => {
 			const res = await getMainCategories();
 			dispatch(setCategories(res));
@@ -40,9 +40,9 @@ const useThunks = () => {
 	);
 
 	const fetchCategoriesInfo = createAsyncThunk(
-		'products/fetchCategoriesInfo',
-		async (options, { dispatch }) => {
-			const { item, categories } = options;
+		'data/fetchCategoriesInfo',
+		async (item, { dispatch, getState }) => {
+			const { categories } = getState().data;
 			let childrenCategories;
 
 			if (item.children_categories) {

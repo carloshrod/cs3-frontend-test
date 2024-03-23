@@ -13,7 +13,7 @@ const apiRequest = axios.create({
 const useApi = () => {
 	const {
 		paging: { offset, limit },
-	} = useSelector(state => state.products);
+	} = useSelector(state => state.data);
 
 	const getProducts = async () => {
 		try {

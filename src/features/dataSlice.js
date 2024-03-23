@@ -6,8 +6,8 @@ const initialState = {
 	categories: [],
 };
 
-export const productSlice = createSlice({
-	name: 'products',
+export const dataSlice = createSlice({
+	name: 'data',
 	initialState,
 	reducers: {
 		setProducts: (state, action) => {
@@ -40,5 +40,5 @@ export const {
 	setCategories,
 	setCategoriesInfo,
 	setPagination,
-} = productSlice.actions;
-export default productSlice.reducer;
+} = dataSlice.actions;
+export default dataSlice.reducer;

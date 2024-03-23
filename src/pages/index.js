@@ -5,7 +5,7 @@ import ProductsTable from '@/components/ProductsTable';
 import useThunks from '@/hooks/useThunks';
 
 export default function Home() {
-	const { products, paging } = useSelector(state => state.products);
+	const { products, paging } = useSelector(state => state.data);
 	const dispatch = useDispatch();
 	const { fetchProducts } = useThunks();
 

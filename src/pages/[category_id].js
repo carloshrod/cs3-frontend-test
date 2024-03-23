@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const ProductsByCategory = () => {
-	const { products, paging } = useSelector(state => state.products);
+	const { products, paging } = useSelector(state => state.data);
 	const {
 		query: { category_id },
 	} = useRouter();

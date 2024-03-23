@@ -9,7 +9,7 @@ const MainContainer = ({ children }) => {
 		pathname,
 		query: { category_id },
 	} = useRouter();
-	const { categories } = useSelector(state => state.products);
+	const { categories } = useSelector(state => state.data);
 	const categoryName = categories.find(
 		category => category.id === category_id,
 	)?.name;
