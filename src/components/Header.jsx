@@ -1,15 +1,16 @@
 import { Box, Typography } from '@mui/material';
+import Link from 'next/link';
 
-const Header = () => {
+export const Header = () => {
 	return (
 		<Box component='header' sx={{ px: 5, py: 2 }}>
 			<section>
-				<Typography variant='h4' component='span'>
-					TechStore
-				</Typography>
+				<Link href='/'>
+					<Typography variant='h4' component='span'>
+						MLAStore
+					</Typography>
+				</Link>
 			</section>
 		</Box>
 	);
 };
-
-export default Header;
