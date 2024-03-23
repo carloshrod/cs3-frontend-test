@@ -39,9 +39,49 @@ const useApi = () => {
 		}
 	};
 
+	const getMainCategories = async () => {
+		try {
+			const res = await apiRequest(`categories`);
+			const categories = res.data;
+			const categoriesWithChildren = await getCategoriesInfo(categories);
+			return categoriesWithChildren;
+		} catch (error) {
+			console.error(error.message);
+		}
+	};
+
+	const getCategoriesInfo = async categories => {
+		try {
+			const res = await Promise.all(
+				categories.map(async category => {
+					const childrenRes = await getCategoryInfo(category.id);
+					return {
+						...category,
+						children_categories: childrenRes.children_categories,
+						path_from_root: childrenRes.path_from_root,
+					};
+				}),
+			);
+			return res;
+		} catch (error) {
+			console.error(error.message);
+		}
+	};
+
+	const getCategoryInfo = async categoryId => {
+		const res = await apiRequest(
+			`https://api.mercadolibre.com/categories/${categoryId}`,
+		);
+
+		return res.data;
+	};
+
 	return {
 		getProducts,
 		getProductsByCategory,
+		getMainCategories,
+		getCategoriesInfo,
+		getCategoryInfo,
 	};
 };
 
