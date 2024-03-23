@@ -1,7 +1,6 @@
 import { Box, List, Typography } from '@mui/material';
 import { SidebarItemGroup } from './SidebarItemGroup';
 import { useEffect } from 'react';
-import { fetchCategories } from '@/features/productSLice';
 import { useDispatch, useSelector } from 'react-redux';
 import useThunks from '@/hooks/useThunks';
 
@@ -18,8 +17,8 @@ export const Sidebar = () => {
 	return (
 		<Box
 			component='aside'
-			className={`sidebar ${!sidebarFull ? '' : 'sidebar--hide'} `}
-			id={!sidebarFull ? '' : 'show'}
+			className={`sidebar ${sidebarFull ? '' : 'sidebar--hide'} `}
+			id={sidebarFull ? '' : 'show'}
 		>
 			<Typography sx={{ px: 2, fontWeight: 700 }}>Categorías</Typography>
 			<List

@@ -17,8 +17,8 @@ const MainContainer = ({ children }) => {
 	return (
 		<Box
 			component='main'
-			className={`main ${!sidebarFull ? '' : 'main--left'}`}
-			id={!sidebarFull ? '' : 'right'}
+			className={`main ${sidebarFull ? '' : 'main--left'}`}
+			id={sidebarFull ? '' : 'right'}
 		>
 			<Stack spacing={2}>
 				<Breadcrumbs separator={'|'} aria-label='breadcrumb'>
