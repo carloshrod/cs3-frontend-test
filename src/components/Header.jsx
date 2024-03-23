@@ -1,16 +1,18 @@
 import { Box, Typography } from '@mui/material';
 import Link from 'next/link';
+import ToggleSidebar from './ToggleSidebar';
 
 export const Header = () => {
 	return (
 		<Box component='header' sx={{ px: 5, py: 2 }}>
-			<section>
+			<Box component='section' sx={{ display: 'flex', alignItems: 'center' }}>
+				<ToggleSidebar />
 				<Link href='/'>
 					<Typography variant='h4' component='span'>
 						MLAStore
 					</Typography>
 				</Link>
-			</section>
+			</Box>
 		</Box>
 	);
 };
