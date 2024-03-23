@@ -1,4 +1,6 @@
 import {
+	Box,
+	Pagination,
 	Paper,
 	Table,
 	TableBody,
@@ -6,11 +8,25 @@ import {
 	TableContainer,
 	TableHead,
 	TableRow,
+	Typography,
 } from '@mui/material';
 import ProductsTableRow from './ProductsTableRow';
 import { headCells } from './consts';
+import { setPagination } from '@/features/productSLice';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
-const ProductsTable = ({ rows }) => {
+const ProductsTable = ({ rows, paging }) => {
+	const [page, setPage] = useState(1);
+	const dispatch = useDispatch();
+
+	const handleChange = (_event, value) => {
+		setPage(value);
+		dispatch(setPagination((value - 1) * 10));
+	};
+
+	const count = Math.ceil(paging?.total / paging?.limit);
+
 	return (
 		<Paper sx={{ width: '100%', mb: 2, px: 2, py: 1 }}>
 			<TableContainer>
@@ -48,13 +64,26 @@ const ProductsTable = ({ rows }) => {
 						) : (
 							<TableRow>
 								<TableCell sx={{ fontSize: 50 }} align='center' colSpan={6}>
-									¡No data!
+									¡No hay resultados para esta categoría!
 								</TableCell>
 							</TableRow>
 						)}
 					</TableBody>
 				</Table>
 			</TableContainer>
+			<Box
+				spacing={2}
+				sx={{
+					p: 2,
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					gap: 2,
+				}}
+			>
+				<Typography>Página: {page}</Typography>
+				<Pagination count={count} page={page} onChange={handleChange} />
+			</Box>
 		</Paper>
 	);
 };
