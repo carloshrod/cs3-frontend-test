@@ -1,4 +1,5 @@
-import { Avatar, Box, TableCell, TableRow } from '@mui/material';
+import { Box, TableCell, TableRow } from '@mui/material';
+import Image from 'next/image';
 
 const ProductsTableRow = ({ row, labelId }) => {
 	return (
@@ -35,18 +36,15 @@ const ProductsTableRow = ({ row, labelId }) => {
 
 			<TableCell component='th' id={labelId} scope='row' padding='normal'>
 				<Box sx={{ display: 'flex', alignItems: 'center' }}>
-					<Avatar
+					<Image
 						src={row.thumbnail}
-						alt='Product image'
-						variant='square'
-						sx={{
-							width: 70,
-							height: 70,
-							backgroundColor: '#f0f9ff',
-							borderRadius: 2,
-							mr: 1,
-						}}
-					></Avatar>
+						alt={row.title}
+						width='70'
+						height='70'
+						blurDataURL={row.thumbnail}
+						placeholder='blur'
+						loading='lazy'
+					/>
 				</Box>
 			</TableCell>
 		</TableRow>
