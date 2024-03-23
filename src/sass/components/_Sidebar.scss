@@ -1,12 +1,27 @@
 @use '../variables' as var;
 
 .sidebar {
-  width: 190px;
-  position: fixed;
+  width: 250px;
+  position: absolute;
   z-index: 999;
   padding-right: 10px;
 
-  .MuiButtonBase-root {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var.$gray-darker;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var.$gray;
+    border-radius: 3px;
+  }
+
+  .MuiListItemButton-root {
     height: 50px;
     border-radius: 0 5px 5px 0;
     box-shadow: 1px 1px 2px var.$bg-darker-color;
@@ -36,9 +51,8 @@
   }
 
   .Mui-selected {
-    background-color: var(--primary-transp-color) !important;
-    box-shadow: 1px 1px 2px var(--bg-darker-color);
-    color: var(--primary-color);
+    background-color: var.$bg-darker-color !important;
+    font-weight: bold !important;
     opacity: 1;
 
     svg {
@@ -74,7 +88,7 @@
     }
 
     &#show {
-      width: 190px;
+      width: 250px;
 
       .MuiTypography-root {
         display: block;

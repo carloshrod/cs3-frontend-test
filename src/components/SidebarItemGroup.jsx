@@ -19,16 +19,16 @@ export const SidebarItemGroup = ({ item }) => {
 					item={subItem}
 					open={openCollapseItems[subItem.id] || false}
 					handleOpen={() => handleOpen(subItem.id)}
-					padding={depth * 20}
+					depth={depth * 25}
 					index={index}
 				/>
-				{subItem.sub && (
+				{subItem?.children_categories && (
 					<Collapse
 						in={openCollapseItems[subItem.id] || false}
 						timeout='auto'
 						unmountOnExit
 					>
-						{renderSubItems(subItem.sub, depth + 1)}
+						{renderSubItems(subItem?.children_categories, depth + 1)}
 					</Collapse>
 				)}
 			</div>
@@ -47,7 +47,7 @@ export const SidebarItemGroup = ({ item }) => {
 				timeout='auto'
 				unmountOnExit
 			>
-				{item.sub && renderSubItems(item.sub)}
+				{item?.children_categories && renderSubItems(item?.children_categories)}
 			</Collapse>{' '}
 		</>
 	);
