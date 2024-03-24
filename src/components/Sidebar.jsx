@@ -20,7 +20,7 @@ export const Sidebar = () => {
 			className={`sidebar ${sidebarFull ? '' : 'sidebar--hide'} `}
 			id={sidebarFull ? '' : 'show'}
 		>
-			<Typography sx={{ px: 2, fontWeight: 700 }}>Categorías</Typography>
+			<Typography sx={{ p: 2, fontWeight: 700 }}>Categorías</Typography>
 			<List
 				component='nav'
 				aria-label='main sidebar'

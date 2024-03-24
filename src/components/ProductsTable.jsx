@@ -29,43 +29,43 @@ const ProductsTable = ({ rows, paging }) => {
 	const count = Math.ceil(paging?.total / paging?.limit);
 
 	return (
-		<Paper sx={{ width: '100%', mb: 2, px: 2, py: 1 }}>
-			<Box
-				spacing={2}
-				sx={{
-					p: 2,
-					display: 'flex',
-					justifyContent: 'space-between',
-					alignItems: 'center',
-					gap: 2,
-				}}
-			>
-				<Typography sx={{ fontSize: 14, fontWeight: 300 }}>
-					Página: {page}
-				</Typography>
-				<Pagination count={count} page={page} onChange={handleChange} />
-			</Box>
-			<TableContainer>
-				<Table sx={{ minWidth: 750 }} aria-labelledby='tableTitle'>
-					<TableHead>
-						<TableRow>
-							{headCells.map(headCell => (
-								<TableCell
-									key={headCell.id}
-									align={headCell.id === 'status' ? 'center' : 'inherit'}
-									sx={{
-										pl: `${headCell.id === 'status' ? '40px' : ''}`,
-										fontWeight: 700,
-									}}
-								>
-									{headCell.label}
-								</TableCell>
-							))}
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{rows?.length > 0 ? (
-							<>
+		<Paper sx={{ width: '100%', height: '100%', mb: 2, px: 2, py: 1 }}>
+			{rows.length > 0 ? (
+				<>
+					<Box
+						spacing={2}
+						sx={{
+							p: 2,
+							display: 'flex',
+							justifyContent: 'space-between',
+							alignItems: 'center',
+							gap: 2,
+						}}
+					>
+						<Typography sx={{ fontSize: 14, fontWeight: 300 }}>
+							Página: {page}
+						</Typography>
+						<Pagination count={count} page={page} onChange={handleChange} />
+					</Box>
+					<TableContainer>
+						<Table sx={{ minWidth: 750 }} aria-labelledby='tableTitle'>
+							<TableHead>
+								<TableRow>
+									{headCells.map(headCell => (
+										<TableCell
+											key={headCell.id}
+											align={headCell.id === 'status' ? 'center' : 'inherit'}
+											sx={{
+												pl: `${headCell.id === 'status' ? '40px' : ''}`,
+												fontWeight: 700,
+											}}
+										>
+											{headCell.label}
+										</TableCell>
+									))}
+								</TableRow>
+							</TableHead>
+							<TableBody>
 								{rows.map((row, i) => {
 									const labelId = `products-table-${i}`;
 									return (
@@ -76,32 +76,40 @@ const ProductsTable = ({ rows, paging }) => {
 										/>
 									);
 								})}
-							</>
-						) : (
-							<TableRow>
-								<TableCell sx={{ fontSize: 50 }} align='center' colSpan={6}>
-									¡No hay resultados para esta categoría!
-								</TableCell>
-							</TableRow>
-						)}
-					</TableBody>
-				</Table>
-			</TableContainer>
-			<Box
-				spacing={2}
-				sx={{
-					p: 2,
-					display: 'flex',
-					justifyContent: 'space-between',
-					alignItems: 'center',
-					gap: 2,
-				}}
-			>
-				<Typography sx={{ fontSize: 14, fontWeight: 300 }}>
-					Página: {page}
-				</Typography>
-				<Pagination count={count} page={page} onChange={handleChange} />
-			</Box>
+							</TableBody>
+						</Table>
+					</TableContainer>
+					<Box
+						spacing={2}
+						sx={{
+							p: 2,
+							display: 'flex',
+							justifyContent: 'space-between',
+							alignItems: 'center',
+							gap: 2,
+						}}
+					>
+						<Typography sx={{ fontSize: 14, fontWeight: 300 }}>
+							Página: {page}
+						</Typography>
+						<Pagination count={count} page={page} onChange={handleChange} />
+					</Box>
+				</>
+			) : (
+				<Box sx={{ height: '100vh', display: 'flex' }}>
+					<Typography
+						component='p'
+						sx={{
+							m: 'auto',
+							textAlign: 'center',
+							fontSize: 50,
+							fontWeight: 700,
+						}}
+					>
+						¡No hay resultados para esta categoría!
+					</Typography>
+				</Box>
+			)}
 		</Paper>
 	);
 };
