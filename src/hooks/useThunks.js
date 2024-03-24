@@ -36,9 +36,7 @@ const useThunks = () => {
 			const res = await getProductsByCategory(categoryId);
 			dispatch(setProductsByCategory(res));
 
-			setTimeout(() => {
-				dispatch(setIsFetching(false));
-			}, 300);
+			dispatch(setIsFetching(false));
 		},
 	);
 

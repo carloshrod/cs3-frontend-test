@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
 	sidebarFull: true,
 	isFetching: false,
+	titleContainer: '',
 };
 
 export const uiSlice = createSlice({
@@ -15,8 +16,12 @@ export const uiSlice = createSlice({
 		setIsFetching: (state, action) => {
 			state.isFetching = action.payload;
 		},
+		setTitleContainer: (state, action) => {
+			state.titleContainer = action.payload;
+		},
 	},
 });
 
-export const { toggleSidebar, setIsFetching } = uiSlice.actions;
+export const { toggleSidebar, setIsFetching, setTitleContainer } =
+	uiSlice.actions;
 export default uiSlice.reducer;

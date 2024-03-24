@@ -4,15 +4,8 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 
 const MainContainer = ({ children }) => {
-	const { sidebarFull } = useSelector(state => state.ui);
-	const {
-		pathname,
-		query: { category_id },
-	} = useRouter();
-	const { categories } = useSelector(state => state.data);
-	const categoryName = categories.find(
-		category => category.id === category_id,
-	)?.name;
+	const { sidebarFull, titleContainer } = useSelector(state => state.ui);
+	const { pathname } = useRouter();
 
 	return (
 		<Box
@@ -31,7 +24,7 @@ const MainContainer = ({ children }) => {
 					</Link>
 					{pathname !== '/' ? (
 						<Typography key='2' sx={{ fontWeight: 700 }}>
-							{categoryName}
+							{titleContainer}
 						</Typography>
 					) : null}
 				</Breadcrumbs>
