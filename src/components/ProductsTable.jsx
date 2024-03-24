@@ -13,17 +13,20 @@ import {
 import ProductsTableRow from './ProductsTableRow';
 import { headCells } from './consts';
 import { setPagination } from '@/features/dataSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 
 const ProductsTable = ({ rows, paging }) => {
 	const [page, setPage] = useState(1);
+	const { isFetching } = useSelector(state => state.ui);
 	const dispatch = useDispatch();
 
 	const handleChange = (_event, value) => {
-		const newOffset = (value - 1) * paging.limit;
-		setPage(value);
-		dispatch(setPagination(newOffset));
+		if (!isFetching) {
+			const newOffset = (value - 1) * paging.limit;
+			setPage(value);
+			dispatch(setPagination(newOffset));
+		}
 	};
 
 	const count = Math.ceil(paging?.total / paging?.limit);
